@@ -4,7 +4,7 @@ import Display from '../../components/display/Display';
 import Button from '../../components/button/Button';
 import classes from './Calc.css';
 
-class Calc extends Component {
+export default class Calc extends Component {
     state = {
         num: '0',
         temp: '',
@@ -12,8 +12,8 @@ class Calc extends Component {
     };
 
     updateCalcHandler = disp => {
-        if (this.state.num.length > 11) this.setState({ num: 'XXXXXXXXXX' })
-        else if (this.state.num === '0') this.setState({ num: disp })
+        if (this.state.num.length > 11) this.setState({ num: 'XXXXXXXXXX' });
+        else if (this.state.num === '0') this.setState({ num: disp });
         else this.setState({ num: this.state.num + disp }); 
     };
 
@@ -58,8 +58,8 @@ class Calc extends Component {
                 break; 
             case 'divide':
                 let dividedNum = parseFloat(this.state.temp) / parseFloat(this.state.num);
-                if (dividedNum.toString().split('.').length === 2) {
-                    dividedNum = dividedNum.toFixed(3);
+                if (dividedNum.toString().split('').length > 12) {
+                    dividedNum = dividedNum.toString().split('').slice(0, 11).join('') + '+';
                 }
                 this.setState({ num: dividedNum });
                 break;                  
@@ -70,7 +70,6 @@ class Calc extends Component {
 
     updateClear = () => {
         this.setState({ num: '0', temp: '', calculation: '' });
-        // console.log('num: ', this.state.num, 'temp: ',this.state.temp, 'calculation: ', this.state.calculation)
     };
 
     render() {
@@ -109,4 +108,3 @@ class Calc extends Component {
     }
 }
 
-export default Calc;
