@@ -48,7 +48,8 @@ class Calc extends Component {
                 this.setState({ num: Number(this.state.num) * Number(this.state.temp) });
                 break; 
             case 'divide':
-                this.setState({ num: Number(this.state.temp) / Number(this.state.num) });
+                this.setState({ num: parseFloat(this.state.temp) / parseFloat(this.state.num) });
+                console.log('num: ', this.state.num, 'temp: ',this.state.temp)
                 break;                  
             default:
                 this.setState({ num: '0', temp: '', calculation: '' });        
@@ -57,6 +58,7 @@ class Calc extends Component {
 
     updateClear = () => {
         this.setState({ num: '0', temp: '', calculation: '' });
+        // console.log('num: ', this.state.num, 'temp: ',this.state.temp, 'calculation: ', this.state.calculation)
     };
 
     render() {
