@@ -48,7 +48,11 @@ class Calc extends Component {
                 this.setState({ num: Number(this.state.num) * Number(this.state.temp) });
                 break; 
             case 'divide':
-                this.setState({ num: parseFloat(this.state.temp) / parseFloat(this.state.num) });
+                let dividedNum = parseFloat(this.state.temp) / parseFloat(this.state.num);
+                if (dividedNum.toString().split('.').length === 2) {
+                    dividedNum = dividedNum.toFixed(3);
+                }
+                this.setState({ num: dividedNum });
                 console.log('num: ', this.state.num, 'temp: ',this.state.temp)
                 break;                  
             default:
