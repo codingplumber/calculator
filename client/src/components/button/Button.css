@@ -10,6 +10,10 @@
     background-color: beige;
 }
 
+.Button:active {
+    background-color: aqua;  
+}
+
 .Clear {
     width: 100%;
     height: 100%;
@@ -23,6 +27,10 @@
     border-radius: 0 0 15px 15px;
 }
 
+.Clear:active {
+    background-color: red;
+}
+
 .Maths {
     width: 25%;
     height: 100%;
@@ -33,4 +41,8 @@
     font-size: 45px;
     cursor: pointer;
     background-color: red;
+}
+
+.Maths:active {
+    background-color: aqua;  
 }
