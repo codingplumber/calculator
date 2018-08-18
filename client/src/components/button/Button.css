@@ -7,6 +7,7 @@
     justify-content: center;
     font-size: 45px;
     cursor: pointer;
+    background-color: beige;
 }
 
 .Clear {
@@ -18,4 +19,18 @@
     justify-content: center;
     font-size: 45px;
     cursor: pointer;
+    background-color: aqua;
+    border-radius: 0 0 15px 15px;
+}
+
+.Maths {
+    width: 25%;
+    height: 100%;
+    border: 1px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 45px;
+    cursor: pointer;
+    background-color: red;
 }
