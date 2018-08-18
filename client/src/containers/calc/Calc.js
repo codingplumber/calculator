@@ -12,7 +12,8 @@ class Calc extends Component {
     };
 
     updateCalcHandler = disp => {
-        if (this.state.num === '0') this.setState({ num: disp })
+        if (this.state.num.length > 11) this.setState({ num: 'XXXXXXXXXX' })
+        else if (this.state.num === '0') this.setState({ num: disp })
         else this.setState({ num: this.state.num + disp }); 
     };
 
@@ -39,13 +40,21 @@ class Calc extends Component {
     updateCalculation = () => {
         switch(this.state.calculation) {
             case 'add':
-                this.setState({ num: Number(this.state.num) + Number(this.state.temp) });
+                let addedNum = Number(this.state.num) + Number(this.state.temp);
+                if (addedNum.toString().split('').length > 12) {
+                    addedNum = addedNum.toString().split('').slice(0, 11).join('') + '+';
+                }
+                this.setState({ num: addedNum });
                 break;
             case 'subtract':
                 this.setState({ num: Number(this.state.temp) - Number(this.state.num) });
                 break;
             case 'multiply':
-                this.setState({ num: Number(this.state.num) * Number(this.state.temp) });
+                let multipliedNum = Number(this.state.num) * Number(this.state.temp);
+                if (multipliedNum.toString().split('').length > 12) {
+                    multipliedNum = multipliedNum.toString().split('').slice(0, 11).join('') + '+';
+                }
+                this.setState({ num: multipliedNum });
                 break; 
             case 'divide':
                 let dividedNum = parseFloat(this.state.temp) / parseFloat(this.state.num);
@@ -53,7 +62,6 @@ class Calc extends Component {
                     dividedNum = dividedNum.toFixed(3);
                 }
                 this.setState({ num: dividedNum });
-                console.log('num: ', this.state.num, 'temp: ',this.state.temp)
                 break;                  
             default:
                 this.setState({ num: '0', temp: '', calculation: '' });        
